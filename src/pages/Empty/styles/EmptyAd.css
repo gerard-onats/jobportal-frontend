@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.person-svg-style {
+    @apply object-fill h-60 w-60 mt-10 px-2;
+    @apply text-center;
+    margin: auto;
+}
+
+.empty-ad-container {
+    @apply mt-10 text-center;
+    width: 100%;
+}
+
+.main-sentence {
+    @apply font-medium;
+    font-size: 1.5em;
+    color: #2E3849;
+}
+
+.sub-sentence {
+    font-size: 1em;
+    color: #5A6881;
+}

@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.job-list-container {
+    @apply overflow-auto;
+    height: 75vh;
+}
+
+.job-title-style {
+    @apply text-lg font-medium;
+}
+
+.job-description-style li, p {
+    font-size: 0.90em;
+}
+
+.job-description-style ul {
+    @apply list-disc;
+    padding-left: 1.25em;
+}

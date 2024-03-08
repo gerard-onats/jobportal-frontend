@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.component-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.form-container {
+    @apply bg-white;
+    @apply w-full max-w-lg;
+    @apply shadow-md rounded;
+    @apply py-4 px-8;
+}
+
+.label-style {
+    @apply block; 
+    @apply text-gray-500 text-sm font-bold;
+    @apply mb-2;
+}
+
+.logo-style {
+    @apply object-fill h-24;
+}
+
+.button-style {
+    @apply shadow bg-green-500;
+    @apply w-full max-w-md;
+    @apply text-white font-bold;
+    @apply rounded py-2 px-4;
+}
+
+.input-style {
+    @apply bg-gray-100;
+    @apply border rounded w-full; 
+    @apply py-3 px-3 mb-3;
+}
+
+.form-title {
+    @apply text-center font-medium tracking-wide text-sm text-gray-600; 
+    @apply mb-2;
+}
+

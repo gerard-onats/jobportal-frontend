@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.query-container-style {
+    @apply w-1/2 m-auto mb-4;
+    @apply border rounded;
+    @apply px-2 py-2;
+    background-color: white;
+}
+
+.dropdown-container {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    background-color: white;
+}
+
+.dropdown:hover .dropdown-container {
+    display: block;
+}

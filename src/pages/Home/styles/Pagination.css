@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.pagination-container {
+    margin-top: 10px;
+    @apply flex justify-center;
+    padding: 0.5em 0em;
+    background-color: white;
+}
+
+.pagination-container button {
+    @apply rounded-full;
+    font-weight: 600;
+    width: 2.50em;
+    height: 2.50em;
+    border: 1px solid #383838;
+    margin: 0px 5px;
+}
+
+.selected {
+    color: white;
+    background-color: #383838;
+}

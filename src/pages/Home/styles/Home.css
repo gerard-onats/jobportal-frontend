@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.pagination-style .selected {
+    font-weight: 600;
+    color: white;
+    background-color: black;
+}

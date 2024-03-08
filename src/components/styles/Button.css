@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.Button-component-style {
+    @apply py-2 px-2 mr-2;
+    @apply inline-flex align-middle;
+    @apply border border-2 border-gray-400 rounded-full;
+    @apply font-medium text-base;
+}
+
+.Button-component-style svg {
+    @apply mr-2;
+}

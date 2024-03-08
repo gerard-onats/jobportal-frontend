@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.Input-component-style {
+    @apply bg-gray-100;
+    @apply border rounded w-full; 
+    @apply py-2 px-2 mb-2;
+}

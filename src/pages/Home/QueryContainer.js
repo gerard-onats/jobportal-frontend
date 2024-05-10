@@ -1,7 +1,7 @@
-import { setSearchParams, setSearchResults } from '../../store/searchQuerySlice';
+import { fetchQueryResults } from '../../store/searchQuerySlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { memo, useRef } from 'react';
-import { searchJobSpecificationApi } from '../../services/jobService';
+import { useNavigate } from 'react-router-dom';
 
 import './styles/QueryContainer.css'
 import Input from '../../components/Input';
@@ -15,9 +15,10 @@ import MapPin from '../../svg/MapPin';
 
 const QueryContainer = () => {
     const searchQueryRef = useRef('');
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
-    const searchQuerySelector = useSelector((state) => state.search.searchQuery);
+    const searchQuerySelector = useSelector((state) => state.search.query);
 
     const handleTextChange = (query) => {
         searchQueryRef.current = query;
@@ -25,12 +26,14 @@ const QueryContainer = () => {
 
     const handleSearch = async () => {
         const shouldRender = (searchQueryRef.current !== searchQuerySelector);
-        if(!shouldRender) return;
-        
-        const jsonResponse = await searchJobSpecificationApi(searchQueryRef.current, 1, true);
-    
-        dispatch(setSearchParams({ searchQuery: searchQueryRef.current }));
-        dispatch(setSearchResults(jsonResponse));
+        if(shouldRender) dispatch(fetchQueryResults(searchQueryRef.current));
+    }
+
+    const handleSubmit = async (e) => {
+        // alert('Form was submitted')
+        await handleSearch();
+        navigate('/', { shallow: true });
+        e.preventDefault();
     }
 
     const customInputStyle = {
@@ -62,6 +65,9 @@ const QueryContainer = () => {
                 onClick={ () => { handleSearch() } }
                 customStyle={customButtonStyle}
                 textComponent='Search' />
+            <form onSubmit={handleSubmit} method="get">
+                <button type="submit">Submit a query</button>
+            </form>
             <div className="mb-4">
                 <Button 
                     svgComponent={<Clock />}

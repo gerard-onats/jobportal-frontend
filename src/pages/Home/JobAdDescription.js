@@ -14,9 +14,9 @@ const JobAdDescription = forwardRef(({props, parentRef}) => {
     const [shouldRender, setShouldRender] = useState(false);
 
     useImperativeHandle(parentRef, () => ({
-        setDescription(content) {
+        setDescription(details) {
             setShouldRender(true);
-            setDetails(content);
+            setDetails(details);
         }
     }));
 
@@ -77,7 +77,7 @@ const JobAdDescription = forwardRef(({props, parentRef}) => {
                 </div>
                 <div>
                     <div className="job-description-style">{ parse(details.description) }</div>
-                    <p className="font-medium mb-2">About the company:</p>
+                    <p className="font-medium mt-4 mb-1">About the company:</p>
                     <div className="flex flex-row">
                         <img src={ details.base64Image } className="object-fill h-12 w-12 mt-2" />
                         <div className="ml-4 pt-1 mb-5">

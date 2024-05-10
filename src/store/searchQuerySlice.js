@@ -1,44 +1,47 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { searchJobSpecificationApi } from "../services/jobService";
+
+const namespace = 'search'
 
 const initialState = {
-    searchQuery: null,
-    isNewSearch: true,
+    query: null,
+    fresh: true,
     location: null,
     datePosted: null,
     jobType: null,
     preferenceType: null,
-    pageNumber: 1,
-    pagesNeeded: 0,
     experienceLevel: null,
-    results: [],
-    resultMatch: 0,
+    pageNumber: 1,
+    data: {
+        results: [],
+        matches: 0,
+        pagesNeeded: 0,
+    }
 }
 
+export const fetchQueryResults = createAsyncThunk(`${namespace}/fetchQueryResults`, async(args) => {
+    const res = await searchJobSpecificationApi(args, 1, true);
+    return res;
+})
+
+export const fetchNextPageResults = createAsyncThunk(`${namespace}/fetchNextPageResults`, async() => {
+
+})
+
 const searchQuerySlice = createSlice({
-    name: 'search',
+    name: `${namespace}`,
     initialState,
     reducers: {
-        setSearchResults: (state, action) => {
-            state.isNewSearch = true;
+    },
+    extraReducers: builder => {
+        builder.addCase(fetchQueryResults.fulfilled, (state, {payload}) => {
+            state.fresh = true;
             state.pageNumber = 1;
-            state.pagesNeeded = action.payload.pagesNeeded;
-            state.resultMatch = action.payload.resultMatch;
-            state.results = action.payload.results;
-        },
-        setResultsNextPage: (state, action) => {
-            state.pageNumber = action.payload.pageNumber;
-            state.results = action.payload.results;
-        },
-        setSearchParams: (state, action) => {
-            /* TODO: add other states like location, jobtype, etc. */
-            state.searchQuery = action.payload.searchQuery;
-        },
-        setPageNumber: (state, action) => {
-            state.isNewSearch = false;
-            state.pageNumber = action.payload.pageNumber;
-        },
+            state.data.pagesNeeded = payload.pagesNeeded;
+            state.data.matches = payload.matches;
+            state.data.results = payload.results;
+        })
     }
 });
 
-export const { setSearchResults, setResultsNextPage, setSearchParams, setPageNumber } = searchQuerySlice.actions;
 export default searchQuerySlice.reducer;

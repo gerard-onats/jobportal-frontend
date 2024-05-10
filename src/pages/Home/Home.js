@@ -13,10 +13,10 @@ const Home = () => {
     const searchQueryRef = useRef('');
     const searchPageRef = useRef(1);
 
-    const searchQuerySelector = useSelector((state) => state.search.searchQuery);
-    const searchResultsSelector = useSelector((state) => state.search.results);
+    const searchQuerySelector = useSelector((state) => state.search.query);
     const searchPageNumberSelector = useSelector((state) => state.search.pageNumber);
-    const resultMatchSelector = useSelector((state) => state.search.resultMatch);
+    const searchResultsSelector = useSelector((state) => state.search.data.results);
+    const resultMatchSelector = useSelector((state) => state.search.data.matches);
 
     let jobMatches = [];
     const shouldRender = (searchQueryRef.current !== searchQuerySelector) || (searchPageRef !== searchPageNumberSelector);
@@ -48,7 +48,7 @@ const Home = () => {
         overflow: 'auto',
     }
 
-    console.log(`Home rendered!`);
+    console.log(`Home rendered! ${resultMatchSelector}`);
     
     return (
         <div className="pt-10" style={ homeContainer }>
@@ -56,8 +56,7 @@ const Home = () => {
             <div className="flex justify-center" style={ jobResultsContainer }>
                 <div>
                     <p className="text-sm italic font-light py-2 px-4">
-                        Showing { resultMatchSelector } results for 
-                        <span className="font-bold text-blue-700"> { searchQuerySelector } </span>
+                        Showing { resultMatchSelector } results
                     </p>
                     <div className="overflow-auto" style={ jobMatchesContainer }>{ jobMatches }</div>
                     <Pagination/>

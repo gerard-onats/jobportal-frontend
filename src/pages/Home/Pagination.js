@@ -1,6 +1,5 @@
 import { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setPageNumber, setResultsNextPage } from "../../store/searchQuerySlice";
 import { searchJobSpecificationApi } from "../../services/jobService";
 
 import './styles/Pagination.css';
@@ -10,18 +9,15 @@ const Pagination = () => {
     let paginationButtons = [];
 
     const dispatch = useDispatch();
-    const searchQuerySelector = useSelector((state) => state.search.searchQuery);
+    const searchQuerySelector = useSelector((state) => state.search.query);
     const pageNumberSelector = useSelector((state) => state.search.pageNumber);
-    const pagesNeededSelector = useSelector((state) => state.search.pagesNeeded);
+    const pagesNeededSelector = useSelector((state) => state.search.data.pagesNeeded);
     
     const handleNextPage = async (index) => {
         const shouldRender = pageNumberSelector !== index;
         if(!shouldRender) return;
 
         const jsonResponse = await searchJobSpecificationApi(searchQuerySelector, index, false);
-
-        dispatch(setResultsNextPage(jsonResponse));
-        dispatch(setPageNumber({pageNumber: index}));
     }
     
     const list = [];
@@ -36,7 +32,7 @@ const Pagination = () => {
                 { element }
         </button>);
 
-    console.log(`Pagination rendered!`);
+    console.log(`Pagination rendered! with pages ${pagesNeededSelector}`);
 
     return (
         <>

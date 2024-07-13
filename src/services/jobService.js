@@ -15,3 +15,18 @@ export const searchJobSpecificationApi = async (searchQuery, pageNumber, isNewSe
     const result = await response.json();
     return result;
 }
+
+export const searchJobApplicationQuestionsApi = async (id) => {
+    const path = JOB_SERVICE_API + `questions/${id}`;
+    const response = await fetch(path,
+        {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": localStorage.getItem('token')
+            },
+        });
+    const result = await response.json();
+    return result;
+}

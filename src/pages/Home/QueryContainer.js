@@ -1,7 +1,6 @@
 import { fetchQueryResults } from '../../store/searchQuerySlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { memo, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import './styles/QueryContainer.css'
 import Input from '../../components/Input';
@@ -15,7 +14,6 @@ import MapPin from '../../svg/MapPin';
 
 const QueryContainer = () => {
     const searchQueryRef = useRef('');
-    const navigate = useNavigate();
 
     const dispatch = useDispatch();
     const searchQuerySelector = useSelector((state) => state.search.query);
@@ -27,13 +25,6 @@ const QueryContainer = () => {
     const handleSearch = async () => {
         const shouldRender = (searchQueryRef.current !== searchQuerySelector);
         if(shouldRender) dispatch(fetchQueryResults(searchQueryRef.current));
-    }
-
-    const handleSubmit = async (e) => {
-        // alert('Form was submitted')
-        await handleSearch();
-        navigate('/', { shallow: true });
-        e.preventDefault();
     }
 
     const customInputStyle = {
@@ -65,9 +56,6 @@ const QueryContainer = () => {
                 onClick={ () => { handleSearch() } }
                 customStyle={customButtonStyle}
                 textComponent='Search' />
-            <form onSubmit={handleSubmit} method="get">
-                <button type="submit">Submit a query</button>
-            </form>
             <div className="mb-4">
                 <Button 
                     svgComponent={<Clock />}

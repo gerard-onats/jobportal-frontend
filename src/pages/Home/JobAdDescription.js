@@ -1,6 +1,7 @@
+/* eslint-disable jsx-a11y/alt-text */
 import EmptyAd from "../Empty/EmptyAd";
 
-import React, { memo, useState, forwardRef, useImperativeHandle } from 'react';
+import React, {memo, useState, forwardRef, useImperativeHandle, useRef} from 'react';
 
 import parse from 'html-react-parser';
 
@@ -8,26 +9,28 @@ import './styles/JobAdDescription.css'
 import Job from '../../svg/Job';
 import Apply from '../../svg/Apply';
 import Bookmark from '../../svg/Bookmark';
+import QuestionsModal from "./QuestionsModal";
 
 const JobAdDescription = forwardRef(({props, parentRef}) => {
+    const ref = useRef();
     const [details, setDetails] = useState('');
     const [shouldRender, setShouldRender] = useState(false);
 
-    useImperativeHandle(parentRef, () => ({
-        setDescription(details) {
-            setShouldRender(true);
-            setDetails(details);
+    useImperativeHandle(parentRef, () => {
+        return {
+            setDescription(details) {
+                setShouldRender(true);
+                setDetails(details);
+            }
         }
-    }));
-
-    console.log(`JobAdDescription rendered ${details.title}`);
+    }, []);
 
     return ( 
         <div className="ml-2 w-1/3 bg-white overflow-auto">
             { shouldRender ? 
             <div className="py-5 px-8">
                 <div className="flex flex-row">
-                    <img src={ details.base64Image } className="object-fill h-12 w-12 mt-2" />
+                    <img src={details.base64Image} className="object-fill h-12 w-12 mt-2" />
                     <div className="ml-4 pt-1">
                         <p className="job-title-style">{ details.title }</p>
                         <p>{ details.location }</p>
@@ -65,8 +68,8 @@ const JobAdDescription = forwardRef(({props, parentRef}) => {
                         <li className="text-xs font-medium mr-2 py-0.5 px-3 border border-gray-400 rounded-full">Night shift</li>
                     </ul>
                 </div>
-                <div className="mb-5 mt-5">
-                    <button className="border border-blue-500 py-2 px-3 font-medium bg-blue-500 text-white rounded-full mr-5 inline-flex items-center">
+                <div className="my-5">
+                    <button onClick={ () => ref.current.setDetails(details) } className="border border-blue-500 py-2 px-3 font-medium bg-blue-500 text-white rounded-full mr-5 inline-flex items-center hover:bg-blue-700">
                         <Apply />
                         <span>Quick Apply</span>
                     </button>
@@ -76,7 +79,7 @@ const JobAdDescription = forwardRef(({props, parentRef}) => {
                     </button>
                 </div>
                 <div>
-                    <div className="job-description-style">{ parse(details.description) }</div>
+                    <div className="job-description-style">{parse(details.description)}</div>
                     <p className="font-medium mt-4 mb-1">About the company:</p>
                     <div className="flex flex-row">
                         <img src={ details.base64Image } className="object-fill h-12 w-12 mt-2" />
@@ -88,6 +91,7 @@ const JobAdDescription = forwardRef(({props, parentRef}) => {
                     <p className="font-light text-sm italic">{ details.companyDescription }</p>
                 </div>
             </div> : <EmptyAd /> }
+            <QuestionsModal parentRef = {ref}/>
         </div>
     );
 });

@@ -1,4 +1,4 @@
-const RouteConstants = {
+const ROUTES = {
     private: {
         
     },
@@ -10,4 +10,4 @@ const RouteConstants = {
     }
 }
 
-export default RouteConstants;
+export default ROUTES;

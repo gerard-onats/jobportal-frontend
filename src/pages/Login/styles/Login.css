@@ -18,7 +18,7 @@
 
 .label-style {
     @apply block; 
-    @apply text-gray-500 text-sm font-bold;
+    @apply text-gray-500 text-sm;
     @apply mb-2;
 }
 
@@ -44,3 +44,6 @@
     @apply mb-2;
 }
 
+.warning-message {
+    @apply italic text-orange-500 text-sm;
+}

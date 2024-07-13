@@ -1,6 +1,9 @@
-const ROUTES = {
+export const ROUTES = {
     private: {
-        
+        Home: {
+            name: 'home',
+            path: '/'
+        }
     },
     public: {
         Login: {

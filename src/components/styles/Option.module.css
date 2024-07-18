@@ -1,0 +1,5 @@
+.default {
+    @apply border border-solid border-neutral-200 bg-transparent;
+    @apply border rounded w-full; 
+    @apply py-2 px-2 mb-2;
+}

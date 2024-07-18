@@ -30,6 +30,11 @@ const Navbar = () => {
                         Company Profiles
                     </Link>
                 </li>
+                <li className="navbar-text">
+                    <Link to='/playground'>
+                        Playground
+                    </Link>
+                </li>
             </ul>
             <ul className="list-style">
                 <li><Message /></li>

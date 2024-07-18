@@ -1,4 +1,4 @@
-import './styles/Option.css';
+import styles from './styles/Option.module.css';
 
 const Option = ({options}) => {
     const optionsList = options.map(
@@ -6,7 +6,7 @@ const Option = ({options}) => {
     )
     return (
         <>
-            <select className="Option-component-style">
+            <select className={styles.default}>
                 {optionsList}
             </select>
         </>

@@ -1,11 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.Button-component-style {
+.default {
     @apply py-2 px-2 mr-2;
     @apply inline-flex align-middle;
-    @apply border border-2 border-gray-400 rounded-full;
+    @apply border border-2 border-gray-400;
     @apply font-medium text-base;
 }
 

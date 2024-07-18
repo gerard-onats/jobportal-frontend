@@ -34,8 +34,8 @@ const QueryContainer = () => {
 
     const customButtonStyle = {
         color: 'white',
-        backgroundColor: '#3B82F6',
-        border: '1px solid #3B82F6',
+        backgroundColor: '#10182F',
+        border: '1px solid #10182F',
     }
 
     console.log(`QueryContainer rendered!`);
@@ -55,7 +55,7 @@ const QueryContainer = () => {
                 svgComponent={<Search />}
                 onClick={ () => { handleSearch() } }
                 customStyle={customButtonStyle}
-                textComponent='Search' />
+                textComponent='Find Jobs' />
             <div className="mb-4">
                 <Button 
                     svgComponent={<Clock />}

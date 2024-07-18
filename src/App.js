@@ -11,6 +11,7 @@ import PublicRoutes from './routes/PublicRoutes';
 import PrivateRoutes from './routes/PrivateRoutes';
 import Settings from './pages/Settings';
 import RouteConstants from './routes/RouteConstants';
+import Playground from './pages/Playground';
 
 const App = () => {
     return (
@@ -21,9 +22,10 @@ const App = () => {
                         <Route element={<Home />} path='/' />
                         <Route element ={<Editor/>} path='/editor' />
                         <Route element ={<Settings/>} path='/settings/profile' />
+                        <Route element ={<Playground/>} path={RouteConstants.private.Playground.path} />
                     </Route>
                     <Route element={<PublicRoutes />}>
-                        <Route element={<Login />} path={ RouteConstants.public.Login.path } />
+                        <Route element={<Login />} path={RouteConstants.public.Login.path} />
                     </Route>
                 </Routes>
             </Router>

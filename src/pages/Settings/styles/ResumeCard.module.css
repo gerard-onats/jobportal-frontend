@@ -1,0 +1,16 @@
+#container {
+    @apply w-2/3 flex justify-between;
+    @apply py-2 px-2;
+}
+
+.documentName {
+    @apply font-bold;
+}
+
+.documentDateDetails {
+    @apply text-sm text-gray-400;
+}
+
+.fileSize {
+    @apply text-sm font-bold text-gray-400;
+}

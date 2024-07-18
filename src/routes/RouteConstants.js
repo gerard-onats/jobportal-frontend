@@ -3,6 +3,10 @@ export const ROUTES = {
         Home: {
             name: 'home',
             path: '/'
+        },
+        Playground: {
+            name: 'playground',
+            path: '/playground'
         }
     },
     public: {

@@ -1,49 +1,58 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.component-container {
+.componentContainer {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 80vh;
 }
 
-.form-container {
+.formContainer {
     @apply bg-white;
     @apply w-full max-w-lg;
     @apply shadow-md rounded;
     @apply py-4 px-8;
 }
 
-.label-style {
+.labelStyle {
     @apply block; 
     @apply text-gray-500 text-sm;
     @apply mb-2;
 }
 
-.logo-style {
+.logoStyle {
     @apply object-fill h-24;
 }
 
-.button-style {
-    @apply shadow bg-green-500;
+.buttonStyle {
+    @apply shadow bg-['#10182F'];
     @apply w-full max-w-md;
     @apply text-white font-bold;
     @apply rounded py-2 px-4;
 }
 
-.input-style {
+.inputStyle {
     @apply bg-gray-100;
     @apply border rounded w-full; 
     @apply py-3 px-3 mb-3;
 }
 
-.form-title {
-    @apply text-center font-medium tracking-wide text-sm text-gray-600; 
-    @apply mb-2;
+.containerFlexCenter {
+    @apply flex justify-center mb-4;
 }
 
-.warning-message {
+.containerFlexBetween {
+    @apply flex justify-between mb-4;
+}
+
+/* id */
+#signUp {
+    @apply text-[#F2AA02] underline;
+}
+
+#warningMessage {
     @apply italic text-orange-500 text-sm;
+}
+
+#formTitle {
+    @apply text-center font-medium tracking-wide text-sm text-gray-600; 
+    @apply mb-4;
 }

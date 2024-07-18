@@ -5,12 +5,14 @@ import {authenticateApi} from '../../services/authenticationService'
 import {LOGIN} from './constants/index.js'
 import {ROUTES} from './../../routes/RouteConstants.js'
 
-import './styles/Login.css'
+import styles from './styles/Login.module.css'
+
 import REACT_LOGO from './../../images/react-logo.png'
 import {HTTP_STATUS_OK} from '../../constants';
 import GmailColored from '../../svg/GmailColored';
 import FacebookColored from '../../svg/FacebookColored';
 import LinkedinColored from '../../svg/LinkedinColored';
+import Input from '../../components/Input.js';
 
 const Login = () => {
     const [warningMessage, setWarningMessage] = useState(null);
@@ -34,49 +36,45 @@ const Login = () => {
     }
 
     return (
-        <div className="component-container">
-            <form onSubmit={handleSubmit(onSubmit)} className="form-container">
-                <div className="mb-4">
-                    <div className="flex justify-center mb-2" >
-                        <img src={REACT_LOGO} alt="logo" className="logo-style w-18" />
-                    </div>
-                    <p className="form-title">{LOGIN.HEADER}</p>
+        <div className={styles.componentContainer}>
+            <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
+                <div className={styles.containerFlexCenter} >
+                    <img src={REACT_LOGO} alt="logo" className={styles.logoStyle + ' w-18'} />
                 </div>
-                <label className="label-style" id="username">{LOGIN.USERNAME}</label>
-                <input 
-                    className="input-style"
+                <p id={styles.formTitle}>{LOGIN.HEADER}</p>
+                <label className={styles.labelStyle} id="username">{LOGIN.USERNAME}</label>
+                <Input 
                     type="text"
-                    name = "username"
+                    name="username"
                     placeholder="johndoe@mail.com"
-                    {...register("username")}
+                    registerProps={register("username")}
                 /> <br/>
-                <label className="label-style" id="password">{LOGIN.PASSWORD}</label>
-                <input 
-                    className="input-style"
+                <label className={styles.labelStyle} id="password">{LOGIN.PASSWORD}</label>
+                <Input 
                     type="password"
                     name="password"
                     placeholder="password"
-                    {...register("password")}
+                    registerProps={register("password")}
                 /> <br/>
-                <p className="warning-message">{warningMessage}</p>
-                <div className="flex justify-between mb-3">
+                <p id={styles.warningMessage}>{warningMessage}</p>
+                <div className={styles.containerFlexBetween}>
                     <label className="text-md text-gray-500" id="remember-password">
                         <input type="checkbox" name="remember-password" /> {LOGIN.REMEMBER_ME}
                     </label>
                     <p className="text-md text-[#F2AA02] underline">{LOGIN.FORGOT_PASSWORD}</p>
                 </div>
-                <div className="flex justify-center mb-3">
+                <div className={styles.containerFlexCenter}>
                     <button 
                         type="submit" 
-                        className="button-style bg-[#10182F]"
+                        className={styles.buttonStyle}
                     >{LOGIN.BUTTON_LABEL}</button>
                 </div>
-                <div className="flex justify-center">
+                <div className={styles.containerFlexCenter}>
                     <p className="text-md text-gray-500">
-                        {LOGIN.IS_MEMBER} <span className="text-[#F2AA02] underline">{LOGIN.SIGN_UP}</span>
+                        {LOGIN.IS_MEMBER} <span id={styles.signUp}>{LOGIN.SIGN_UP}</span>
                     </p>
                 </div>
-                <div className="flex justify-center mt-4">
+                <div className={styles.containerFlexCenter}>
                     <GmailColored />
                     <FacebookColored />
                     <LinkedinColored />

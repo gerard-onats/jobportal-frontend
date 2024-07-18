@@ -1,14 +1,14 @@
-import './styles/Input.css';
+import styles from './styles/Input.module.css';
 
-const Input = ({type, onChange, customStyle, placeholder, name, extra}) => {
+const Input = ({name, type, onChange, className, placeholder, customStyle, registerProps}) => {
     return (
         <input 
             name={name}
             type={type}
             onChange={onChange}
             placeholder={placeholder}
-            {...extra}
-            className="Input-component-style"
+            {...registerProps} /* used for react-hook-forms */
+            className={styles.default + ' ' + className}
             style={customStyle} />
     );
 };

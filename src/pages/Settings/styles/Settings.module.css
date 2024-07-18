@@ -1,0 +1,52 @@
+:root {
+    --selected-tab: #E65B00;
+    --unselected-tab: gray;
+}
+
+.button {
+    color: gray;
+    @apply font-bold border px-4 py-1 text-sm mr-3 rounded-md;
+}
+
+.selectedTab {
+    @apply font-bold text-[var(--selected-tab)];
+    border-bottom: 4px solid var(--selected-tab);
+}
+
+.unselectedTab {
+    color: var(--unselected-tab);
+}
+
+.basicProfileDetails {
+    @apply text-center text-sm text-gray-700;
+}
+
+.header {
+    @apply text-lg font-bold;
+}
+
+.description {
+    @apply text-xs italic text-gray-500;
+    @apply mb-2;
+}
+
+.centered {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ids */
+#tabs {
+    @apply inline-flex;
+    @apply bg-white px-1;
+}
+
+#tabs li {
+    @apply py-2 px-5;
+}
+
+#container {
+    @apply flex justify-center;
+    @apply mb-4
+}

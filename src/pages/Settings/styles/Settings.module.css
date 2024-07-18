@@ -25,6 +25,14 @@
     @apply text-lg font-bold;
 }
 
+.formLabel {
+    @apply text-xs;
+}
+
+.formContainer {
+    @apply w-1/2 pr-2;
+}
+
 .description {
     @apply text-xs italic text-gray-500;
     @apply mb-2;
@@ -48,5 +56,6 @@
 
 #container {
     @apply flex justify-center;
-    @apply mb-4
+    @apply mb-4;
+    min-height: 87.50vh;
 }

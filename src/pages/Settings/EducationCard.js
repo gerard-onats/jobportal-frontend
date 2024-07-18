@@ -1,10 +1,6 @@
 import School from "../../svg/School";
 
 const AddEducationCard = () => {
-    const defaultStyle = {
-        height: '87.50vh'
-    }
-
     const component = {
         width: '95.5%',
         marginLeft: 'auto',

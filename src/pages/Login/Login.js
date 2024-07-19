@@ -1,39 +1,16 @@
-import {useState} from 'react'
-import {useNavigate} from 'react-router-dom';
-import {useForm} from 'react-hook-form';
-import {authenticateApi} from '../../services/authenticationService'
 import {LOGIN} from './constants/index.js'
-import {ROUTES} from './../../routes/RouteConstants.js'
 
 import styles from './styles/Login.module.css'
 
 import REACT_LOGO from './../../images/react-logo.png'
-import {HTTP_STATUS_OK} from '../../constants';
 import GmailColored from '../../svg/GmailColored';
 import FacebookColored from '../../svg/FacebookColored';
 import LinkedinColored from '../../svg/LinkedinColored';
 import Input from '../../components/Input.js';
+import useAuthenticate from './hooks/useAuthenticate.js';
 
 const Login = () => {
-    const [warningMessage, setWarningMessage] = useState(null);
-    const navigate = useNavigate();
-    const {register, handleSubmit} = useForm();
-
-    const onSubmit = async (formData) => {
-        try {
-            const response = await authenticateApi(formData.username, formData.password);
-            if(response.httpStatus !== HTTP_STATUS_OK) {
-                setWarningMessage(LOGIN.AUTHENTICATE_ERROR_MESSAGE);
-            }
-            else {
-                localStorage.setItem('token', response.jwt);
-                navigate(ROUTES.private.Home.path);
-            }
-        }
-        catch(error) {
-            setWarningMessage(`Authentication has encountered an error, please try again!`);
-        }
-    }
+    const {warningMessage, register, handleSubmit, onSubmit} = useAuthenticate();
 
     return (
         <div className={styles.componentContainer}>

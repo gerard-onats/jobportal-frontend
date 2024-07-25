@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navContainer {
+    @apply flex justify-between; 
+    @apply border-solid;
+    background-color: white;
+}
+
+.avatar {
+    @apply object-fill h-10 w-10;
+    @apply rounded-full;
+}
+
+.avatar:hover {
+    cursor: pointer;
+}
+
+.list li {
+    @apply font-medium;
+    @apply inline-block align-middle;
+    padding: 0.5em 1.00em;
+}
+
+.logo {
+    @apply object-fill h-10 w-10;
+    @apply rounded-full;
+}
+
+.selected {
+    color: #FD3D08;
+}
+
+.profileMenu {
+    @apply rounded border border-gray-300;
+    background-color: white;
+    display: none;
+    position: absolute;
+    left: -8.75em;
+    top: 3.10em;
+    cursor: pointer;
+}
+
+.profile {
+    position: relative;
+}
+
+.profile:hover .profileMenu {
+    display: block;
+}
+
+.profileMenu li {
+    width: 100%;
+    @apply inline-flex items-center;
+}
+
+.profileMenu li:hover {
+    background-color: #F0FAfC;
+    @apply text-slate-950;
+}
+
+.profileMenu span {
+    @apply text-slate-500 font-medium;
+}

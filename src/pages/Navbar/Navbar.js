@@ -2,7 +2,9 @@ import { useNavigate } from "react-router";
 import { memo } from 'react';
 import { Link } from "react-router-dom";
 
-import './styles/Navbar.css';
+import {NAVBAR} from './constants/index.js';
+
+import styles from './styles/Navbar.module.css';
 import Notification from "../../svg/Notification";
 import Message from "../../svg/Message";
 import PROFILE_PICTURE from './../../images/user-logo.png'
@@ -19,31 +21,21 @@ const Navbar = () => {
 
     console.log("Navbar rendered");
     return (
-        <nav className="nav-container-style">
-            <ul className="list-style">
-                <li><img src={ REACT_LOGO } className="logo-style"/></li>
-                <li className="navbar-text selected-tab">
-                    <Link to='/'>Browse Jobs</Link>
-                </li>
-                <li className="navbar-text">
-                    <Link to='/editor'>
-                        Company Profiles
-                    </Link>
-                </li>
-                <li className="navbar-text">
-                    <Link to='/playground'>
-                        Playground
-                    </Link>
-                </li>
+        <nav className={styles.navContainer}>
+            <ul className={styles.list}>
+                <li><img src={REACT_LOGO} className={styles.logo}/></li>
+                <li className={styles.selected}><Link to='/'>{NAVBAR.BROWSE_JOBS}</Link></li>
+                <li><Link to='/editor'>{NAVBAR.COMPANY_PROFILES}</Link></li>
+                <li><Link to='/playground'>{NAVBAR.PLAYGROUND}</Link></li>
             </ul>
-            <ul className="list-style">
+            <ul className={styles.list}>
                 <li><Message /></li>
                 <li><Notification /></li>
-                <li className="profile">
-                    <img src={ PROFILE_PICTURE } className="profile-picture-style"/>
-                    <ul className="profile-menu">
-                        <li><Settings/><span>Profile Settings</span></li>
-                        <li onClick={logout}><Logout /><span>Logout</span></li>
+                <li className={styles.profile}>
+                    <img src={PROFILE_PICTURE} className={styles.avatar}/>
+                    <ul className={styles.profileMenu}>
+                        <li><Settings/><span>{NAVBAR.PROFILE_SETTINGS}</span></li>
+                        <li onClick={logout}><Logout /><span>{NAVBAR.LOGOUT}</span></li>
                     </ul>
                 </li>
                 

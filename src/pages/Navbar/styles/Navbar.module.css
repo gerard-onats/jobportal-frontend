@@ -31,35 +31,3 @@
 .selected {
     color: #FD3D08;
 }
-
-.profileMenu {
-    @apply rounded border border-gray-300;
-    background-color: white;
-    display: none;
-    position: absolute;
-    left: -8.75em;
-    top: 3.10em;
-    cursor: pointer;
-}
-
-.profile {
-    position: relative;
-}
-
-.profile:hover .profileMenu {
-    display: block;
-}
-
-.profileMenu li {
-    width: 100%;
-    @apply inline-flex items-center;
-}
-
-.profileMenu li:hover {
-    background-color: #F0FAfC;
-    @apply text-slate-950;
-}
-
-.profileMenu span {
-    @apply text-slate-500 font-medium;
-}

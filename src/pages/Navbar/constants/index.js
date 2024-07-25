@@ -6,3 +6,8 @@ export const NAVBAR = {
     PROFILE_SETTINGS: 'Profile Settings',
     LOGOUT: 'Logout',
 }
+
+export const DROPDOWN = {
+    PROFILE_SETTINGS: 'Profile Settings',
+    LOGOUT: 'Logout',
+}

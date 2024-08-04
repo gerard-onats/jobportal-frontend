@@ -1,0 +1,40 @@
+:root {
+    --gray-800: #1F2937;
+    --selected: #D97706;
+    --INFINITE: 100000000;
+}
+
+.container {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown {
+    position: absolute;
+    margin: 0.25em 0em;
+    background-color: white;
+    border: 0.24px solid #DBDBDB;
+    border-radius: 0.375em;
+    min-width: 12.25em;
+    z-index: var(--INFINITE);
+}
+
+.dropdown li {
+    @apply text-sm text-slate-500;
+    padding: 0.50em 0.75em;
+}
+
+.dropdown li:hover {
+    cursor: pointer;
+    @apply bg-sky-500/50;
+}
+
+.selectedOption {
+    @apply font-medium;
+    color: var(--selected) !important;
+}
+
+.buttonSelected {
+    background-color: var(--gray-800);
+    color: white;
+}

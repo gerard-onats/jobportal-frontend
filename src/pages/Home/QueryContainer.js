@@ -2,6 +2,8 @@ import { fetchQueryResults } from '../../store/searchQuerySlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { memo, useRef } from 'react';
 
+import { QUERY_CONTAINER } from './constants';
+
 import './styles/QueryContainer.css'
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -9,8 +11,8 @@ import Search from '../../svg/Search';
 import Job from '../../svg/Job';
 import User from '../../svg/User';
 import Clock from '../../svg/Clock';
-import ChevronDown from '../../svg/ChevronDown';
 import MapPin from '../../svg/MapPin';
+import ButtonDropdown from './ButtonDropdown';
 
 const QueryContainer = () => {
     const searchQueryRef = useRef('');
@@ -32,12 +34,6 @@ const QueryContainer = () => {
         marginRight: '0.25em'
     }
 
-    const customButtonStyle = {
-        color: 'white',
-        backgroundColor: '#10182F',
-        border: '1px solid #10182F',
-    }
-
     console.log(`QueryContainer rendered!`);
 
     return (
@@ -45,7 +41,7 @@ const QueryContainer = () => {
             <Input 
                 type="text"
                 placeholder="Search"
-                onChange={(e) => { handleTextChange(e.target.value) } }
+                onChange={(event) => handleTextChange(event.target.value)}
                 customStyle={customInputStyle} />
             <Input
                 type="text"
@@ -53,22 +49,25 @@ const QueryContainer = () => {
                 customStyle={customInputStyle} />
             <Button 
                 svgComponent={<Search />}
-                onClick={ () => { handleSearch() } }
-                customStyle={customButtonStyle}
-                textComponent='Find Jobs' />
+                onClick={() => handleSearch()}
+                textComponent={QUERY_CONTAINER.FIND_JOBS} />
             <div className="mb-4">
-                <Button 
+                <ButtonDropdown
                     svgComponent={<Clock />}
-                    textComponent={<>Date posted <ChevronDown /></> }/>
-                <Button 
+                    value={QUERY_CONTAINER.DATE_POSTED}
+                    options={QUERY_CONTAINER.OPTIONS.DATE_POSTED} />
+                <ButtonDropdown 
                     svgComponent={<Job />}
-                    textComponent={<>Job type <ChevronDown /></> } />
-                <Button 
+                    value={QUERY_CONTAINER.JOB_TYPE} 
+                    options={QUERY_CONTAINER.OPTIONS.JOB_TYPE}/>
+                <ButtonDropdown
                     svgComponent={<MapPin />}
-                    textComponent={<>Location preference <ChevronDown /></> } />
-                <Button 
+                    value={QUERY_CONTAINER.LOCATION_PREFERENCE}
+                    options={QUERY_CONTAINER.OPTIONS.LOCATION_PREFERENCE} />
+                <ButtonDropdown
                     svgComponent={<User />}
-                    textComponent={<>Experience level <ChevronDown /></> } />
+                    value={QUERY_CONTAINER.EXPERIENCE_LEVEL}
+                    options={QUERY_CONTAINER.OPTIONS.EXPERIENCE_LEVEL} />
             </div>
         </div>
     );

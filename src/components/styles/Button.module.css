@@ -1,7 +1,7 @@
 .default {
     @apply py-2 px-2 mr-2;
     @apply inline-flex align-middle;
-    @apply border border-2 border-gray-400;
+    @apply border border-gray-800;
     @apply font-medium text-base;
 }
 

@@ -1,5 +1,3 @@
-import { useEffect, useRef, useState } from "react";
-
 import Settings from "../../svg/Settings";
 import Logout from "../../svg/Logout";
 import { DROPDOWN } from "./constants";
@@ -8,31 +6,16 @@ import styles from './styles/Dropdown.module.css';
 
 import PROFILE_PICTURE from './../../images/user-logo.png'
 import { useNavigate } from "react-router";
+import useDropdown from "../../hooks/useDropdown";
 
 const Dropdown = () => {
-    const dropdownRef = useRef();
     const navigate = useNavigate();
-    const [visible, setVisible] = useState(false);
+    const {dropdownRef, setVisible, visible} = useDropdown();
 
     const logout = () => {
         localStorage.removeItem('token');
         navigate('/login');
     }
-
-    useEffect(() => {
-        const handler = (event) => {
-            const isInside = dropdownRef.current.contains(event.target);
-            if(!isInside && visible) {
-                setVisible(false);
-            }
-        }
-
-        document.addEventListener("mousedown", handler);
-
-        return () => {
-            document.removeEventListener("mousedown", handler);
-        }
-    });
 
     console.log('Re-rendered!');
 
@@ -42,7 +25,7 @@ const Dropdown = () => {
             {visible &&
                 <ul className={styles.profileMenu}>
                     <li><Settings/><span>{DROPDOWN.PROFILE_SETTINGS}</span></li>
-                    <li onClick={logout}><Logout /><span>{DROPDOWN.LOGOUT}</span></li>
+                    <li onClick={() => logout}><Logout /><span>{DROPDOWN.LOGOUT}</span></li>
                 </ul>}
         </div>
     );

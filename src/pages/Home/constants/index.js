@@ -14,3 +14,17 @@ export const QUESTIONS_MODAL = {
     SUBMIT_APPLICATION: 'Submit Application',
     CANCEL_APPLICATION: 'Cancel',
 };
+
+export const QUERY_CONTAINER = {
+    FIND_JOBS: 'Find jobs',
+    DATE_POSTED: 'Date posted',
+    JOB_TYPE: 'Job type',
+    LOCATION_PREFERENCE: 'Location preference',
+    EXPERIENCE_LEVEL: 'Experience level',
+    OPTIONS: {
+        JOB_TYPE: ['Part-time', 'Full-time', 'Contractual', 'Internship', 'Contract'],
+        DATE_POSTED: ['Last 24 hours', 'Past week', 'Past month', 'Past year'],
+        LOCATION_PREFERENCE: ['On-site', 'Hybrid', 'Remote'],
+        EXPERIENCE_LEVEL: ['Entry Level', 'Associate', 'Junior', 'Mid-level', 'Senior', 'Principal'],
+    }
+}

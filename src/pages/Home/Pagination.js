@@ -8,7 +8,6 @@ import { MAX_PAGINATION_SIZE } from "../../constants";
 const Pagination = () => {
     let paginationButtons = [];
 
-    const dispatch = useDispatch();
     const searchQuerySelector = useSelector((state) => state.search.query);
     const pageNumberSelector = useSelector((state) => state.search.pageNumber);
     const pagesNeededSelector = useSelector((state) => state.search.data.pagesNeeded);
@@ -16,7 +15,6 @@ const Pagination = () => {
     const handleNextPage = async (index) => {
         const shouldRender = pageNumberSelector !== index;
         if(!shouldRender) return;
-
         const jsonResponse = await searchJobSpecificationApi(searchQuerySelector, index, false);
     }
     
@@ -36,7 +34,7 @@ const Pagination = () => {
 
     return (
         <>
-            <ul className="pagination-container">{ paginationButtons }</ul>
+            {pagesNeededSelector !== 0 && <ul className="pagination-container">{paginationButtons }</ul>}
         </>
     );
 }
